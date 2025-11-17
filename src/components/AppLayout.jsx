@@ -19,6 +19,7 @@ import DashboardIcon from '@mui/icons-material/SpaceDashboard';
 import InventoryIcon from '@mui/icons-material/Inventory2';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import SettingsIcon from '@mui/icons-material/Settings';
+import DescriptionIcon from '@mui/icons-material/Description';
 import { useTranslation } from '../i18n/LanguageProvider.jsx';
 
 const drawerWidth = 200;
@@ -32,6 +33,7 @@ export default function AppLayout() {
     () => [
       { text: t('nav.dashboard'), icon: <DashboardIcon />, to: '/dashboard' },
       { text: t('nav.products'), icon: <InventoryIcon />, to: '/products' },
+      { text: t('nav.invoices'), icon: <DescriptionIcon />, to: '/invoices' },
       { text: t('nav.reports'), icon: <AssessmentIcon />, to: '/reports' },
       { text: t('nav.settings'), icon: <SettingsIcon />, to: '/settings' }
     ],

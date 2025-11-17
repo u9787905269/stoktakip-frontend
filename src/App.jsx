@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import DashboardPage from './pages/Dashboard.jsx';
 import ProductsPage from './pages/Products.jsx';
+import InvoicesPage from './pages/Invoices.jsx';
 import ReportsPage from './pages/Reports.jsx';
 import SettingsPage from './pages/Settings.jsx';
 import BarcodePage from './pages/BarcodePage.jsx';
@@ -69,6 +70,7 @@ export default function App() {
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/products" element={<ProductsPage />} />
+            <Route path="/invoices" element={<InvoicesPage />} />
             <Route path="/reports" element={<ReportsPage />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Route>

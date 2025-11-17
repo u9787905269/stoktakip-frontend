@@ -21,6 +21,7 @@ export const translations = {
     nav: {
       dashboard: 'Panel',
       products: 'Ürünler',
+      invoices: 'Faturalar',
       reports: 'Raporlar',
       settings: 'Ayarlar'
     },
