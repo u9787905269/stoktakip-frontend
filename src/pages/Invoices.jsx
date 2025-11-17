@@ -79,7 +79,7 @@ const initialItemForm = {
 
 export default function InvoicesPage() {
   const queryClient = useQueryClient();
-  const { t, locale } = useTranslation();
+  const { t, locale, language } = useTranslation();
   
   const formatCurrency = useCallback(
     (value) =>
@@ -126,12 +126,12 @@ export default function InvoicesPage() {
     mutationFn: createInvoice,
     onSuccess: () => {
       queryClient.invalidateQueries(['invoices']);
-      setNotification({ message: 'Fatura başarıyla oluşturuldu', severity: 'success' });
+      setNotification({ message: t('invoices.notifications.createSuccess'), severity: 'success' });
       handleClose();
     },
     onError: (error) => {
       setNotification({ 
-        message: error.response?.data?.message || 'Fatura oluşturulamadı', 
+        message: error.response?.data?.message || t('invoices.notifications.createError'), 
         severity: 'error' 
       });
     }
@@ -141,12 +141,12 @@ export default function InvoicesPage() {
     mutationFn: ({ id, data }) => updateInvoice(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries(['invoices']);
-      setNotification({ message: 'Fatura başarıyla güncellendi', severity: 'success' });
+      setNotification({ message: t('invoices.notifications.updateSuccess'), severity: 'success' });
       handleClose();
     },
     onError: (error) => {
       setNotification({ 
-        message: error.response?.data?.message || 'Fatura güncellenemedi', 
+        message: error.response?.data?.message || t('invoices.notifications.updateError'), 
         severity: 'error' 
       });
     }
@@ -156,11 +156,11 @@ export default function InvoicesPage() {
     mutationFn: deleteInvoice,
     onSuccess: () => {
       queryClient.invalidateQueries(['invoices']);
-      setNotification({ message: 'Fatura başarıyla silindi', severity: 'success' });
+      setNotification({ message: t('invoices.notifications.deleteSuccess'), severity: 'success' });
     },
     onError: (error) => {
       setNotification({ 
-        message: error.response?.data?.message || 'Fatura silinemedi', 
+        message: error.response?.data?.message || t('invoices.notifications.deleteError'), 
         severity: 'error' 
       });
     }
@@ -203,7 +203,7 @@ export default function InvoicesPage() {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm('Bu faturayı silmek istediğinizden emin misiniz?')) {
+    if (window.confirm(t('invoices.confirmations.delete'))) {
       deleteMutation.mutate(id);
     }
   };
@@ -280,19 +280,19 @@ export default function InvoicesPage() {
 
   const handleExportPdf = async (id) => {
     try {
-      await exportInvoicePdf(id);
-      setNotification({ message: 'PDF başarıyla indirildi', severity: 'success' });
+      await exportInvoicePdf(id, language);
+      setNotification({ message: t('invoices.notifications.pdfSuccess'), severity: 'success' });
     } catch (error) {
-      setNotification({ message: 'PDF indirilemedi', severity: 'error' });
+      setNotification({ message: t('invoices.notifications.pdfError'), severity: 'error' });
     }
   };
 
   const handleExportExcel = async (id) => {
     try {
-      await exportInvoiceExcel(id);
-      setNotification({ message: 'Excel başarıyla indirildi', severity: 'success' });
+      await exportInvoiceExcel(id, language);
+      setNotification({ message: t('invoices.notifications.excelSuccess'), severity: 'success' });
     } catch (error) {
-      setNotification({ message: 'Excel indirilemedi', severity: 'error' });
+      setNotification({ message: t('invoices.notifications.excelError'), severity: 'error' });
     }
   };
 
@@ -310,10 +310,10 @@ export default function InvoicesPage() {
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4" component="h1">
-          Faturalar
+          {t('invoices.title')}
         </Typography>
         <Button variant="contained" startIcon={<AddIcon />} onClick={() => handleOpen()}>
-          Yeni Fatura
+          {t('invoices.addButton')}
         </Button>
       </Box>
 
@@ -321,25 +321,25 @@ export default function InvoicesPage() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Fatura No</TableCell>
-              <TableCell>Tarih</TableCell>
-              <TableCell>Müşteri</TableCell>
-              <TableCell>Toplam</TableCell>
-              <TableCell>Durum</TableCell>
-              <TableCell align="right">İşlemler</TableCell>
+              <TableCell>{t('invoices.table.invoiceNumber')}</TableCell>
+              <TableCell>{t('invoices.table.date')}</TableCell>
+              <TableCell>{t('invoices.table.customer')}</TableCell>
+              <TableCell>{t('invoices.table.total')}</TableCell>
+              <TableCell>{t('invoices.table.status')}</TableCell>
+              <TableCell align="right">{t('invoices.table.actions')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {isLoading ? (
               <TableRow>
                 <TableCell colSpan={6} align="center">
-                  Yükleniyor...
+                  {t('common.loading')}
                 </TableCell>
               </TableRow>
             ) : invoices.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={6} align="center">
-                  Fatura bulunamadı
+                  {t('invoices.empty.noInvoices')}
                 </TableCell>
               </TableRow>
             ) : (
@@ -347,32 +347,32 @@ export default function InvoicesPage() {
                 <TableRow key={invoice.id}>
                   <TableCell>{invoice.invoiceNumber}</TableCell>
                   <TableCell>{formatDate(invoice.invoiceDate)}</TableCell>
-                  <TableCell>{invoice.customerName || '-'}</TableCell>
+                  <TableCell>{invoice.customerName || t('common.notAvailable')}</TableCell>
                   <TableCell>{formatCurrency(invoice.totalAmount)}</TableCell>
                   <TableCell>
                     <Chip 
-                      label={invoice.status || 'DRAFT'} 
+                      label={t(`invoices.form.statusOptions.${invoice.status || 'DRAFT'}`)} 
                       color={getStatusColor(invoice.status)}
                       size="small"
                     />
                   </TableCell>
                   <TableCell align="right">
-                    <Tooltip title="PDF İndir">
+                    <Tooltip title={t('invoices.tooltips.pdf')}>
                       <IconButton size="small" onClick={() => handleExportPdf(invoice.id)}>
                         <PictureAsPdfIcon />
                       </IconButton>
                     </Tooltip>
-                    <Tooltip title="Excel İndir">
+                    <Tooltip title={t('invoices.tooltips.excel')}>
                       <IconButton size="small" onClick={() => handleExportExcel(invoice.id)}>
                         <TableChartIcon />
                       </IconButton>
                     </Tooltip>
-                    <Tooltip title="Düzenle">
+                    <Tooltip title={t('invoices.tooltips.edit')}>
                       <IconButton size="small" onClick={() => handleOpen(invoice)}>
                         <EditOutlinedIcon />
                       </IconButton>
                     </Tooltip>
-                    <Tooltip title="Sil">
+                    <Tooltip title={t('invoices.tooltips.delete')}>
                       <IconButton size="small" onClick={() => handleDelete(invoice.id)} color="error">
                         <DeleteOutlineIcon />
                       </IconButton>
@@ -387,7 +387,7 @@ export default function InvoicesPage() {
 
       {/* Fatura Dialog */}
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-        <DialogTitle>{editingId ? 'Faturayı Düzenle' : 'Yeni Fatura'}</DialogTitle>
+        <DialogTitle>{editingId ? t('invoices.form.editTitle') : t('invoices.form.newTitle')}</DialogTitle>
         <DialogContent>
           <Grid container spacing={2} sx={{ mt: 1 }}>
             {/* Fatura Bilgileri - Kompakt */}
@@ -395,7 +395,7 @@ export default function InvoicesPage() {
               <Box sx={{ p: 1.5, bgcolor: 'background.default', borderRadius: 1, mb: 2, border: '1px solid', borderColor: 'divider' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
-                    <Typography variant="body2" sx={{ fontWeight: 600 }}>Fatura No:</Typography>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }}>{t('invoices.form.invoiceNumber')}</Typography>
                     <TextField
                       value={form.invoiceNumber}
                       onChange={(e) => setForm({ ...form, invoiceNumber: e.target.value })}
@@ -406,7 +406,7 @@ export default function InvoicesPage() {
                     />
                   </Box>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
-                    <Typography variant="body2" sx={{ fontWeight: 600 }}>Fatura Tarihi:</Typography>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }}>{t('invoices.form.invoiceDate')}</Typography>
                     <TextField
                       type="date"
                       value={form.invoiceDate}
@@ -418,7 +418,7 @@ export default function InvoicesPage() {
                     />
                   </Box>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
-                    <Typography variant="body2" sx={{ fontWeight: 600 }}>Vade Tarihi:</Typography>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }}>{t('invoices.form.dueDate')}</Typography>
                     <TextField
                       type="date"
                       value={form.dueDate}
@@ -429,7 +429,7 @@ export default function InvoicesPage() {
                     />
                   </Box>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
-                    <Typography variant="body2" sx={{ fontWeight: 600 }}>Durum:</Typography>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }}>{t('invoices.form.status')}</Typography>
                     <TextField
                       select
                       value={form.status}
@@ -437,10 +437,10 @@ export default function InvoicesPage() {
                       size="small"
                       sx={{ '& .MuiOutlinedInput-root': { fontSize: '0.875rem' }, width: '200px' }}
                     >
-                      <MenuItem value="DRAFT">Taslak</MenuItem>
-                      <MenuItem value="SENT">Gönderildi</MenuItem>
-                      <MenuItem value="PAID">Ödendi</MenuItem>
-                      <MenuItem value="CANCELLED">İptal</MenuItem>
+                      <MenuItem value="DRAFT">{t('invoices.form.statusOptions.DRAFT')}</MenuItem>
+                      <MenuItem value="SENT">{t('invoices.form.statusOptions.SENT')}</MenuItem>
+                      <MenuItem value="PAID">{t('invoices.form.statusOptions.PAID')}</MenuItem>
+                      <MenuItem value="CANCELLED">{t('invoices.form.statusOptions.CANCELLED')}</MenuItem>
                     </TextField>
                   </Box>
                 </Box>
@@ -448,12 +448,12 @@ export default function InvoicesPage() {
             </Grid>
 
             <Grid item xs={12}>
-              <Typography variant="h6" sx={{ mt: 1, mb: 1 }}>Müşteri Bilgileri</Typography>
+              <Typography variant="h6" sx={{ mt: 1, mb: 1 }}>{t('invoices.form.customerInfo')}</Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Müşteri Adı"
+                label={t('invoices.form.customerName')}
                 value={form.customerName}
                 onChange={(e) => setForm({ ...form, customerName: e.target.value })}
               />
@@ -461,7 +461,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Vergi No"
+                label={t('invoices.form.customerTaxNumber')}
                 value={form.customerTaxNumber}
                 onChange={(e) => setForm({ ...form, customerTaxNumber: e.target.value })}
               />
@@ -469,7 +469,7 @@ export default function InvoicesPage() {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Adres"
+                label={t('invoices.form.customerAddress')}
                 multiline
                 rows={2}
                 value={form.customerAddress}
@@ -479,7 +479,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="E-posta"
+                label={t('invoices.form.customerEmail')}
                 type="email"
                 value={form.customerEmail}
                 onChange={(e) => setForm({ ...form, customerEmail: e.target.value })}
@@ -488,7 +488,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Telefon"
+                label={t('invoices.form.customerPhone')}
                 value={form.customerPhone}
                 onChange={(e) => setForm({ ...form, customerPhone: e.target.value })}
               />
@@ -496,28 +496,28 @@ export default function InvoicesPage() {
 
             <Grid item xs={12}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2, mb: 1 }}>
-                <Typography variant="h6">Fatura Kalemleri</Typography>
+                <Typography variant="h6">{t('invoices.form.itemsTitle')}</Typography>
                 <Button variant="outlined" size="small" startIcon={<AddIcon />} onClick={handleAddItem}>
-                  Kalem Ekle
+                  {t('invoices.form.addItem')}
                 </Button>
               </Box>
               <TableContainer component={Paper} variant="outlined">
                 <Table size="small">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Sıra</TableCell>
-                      <TableCell>Ürün</TableCell>
-                      <TableCell>Miktar</TableCell>
-                      <TableCell>Birim Fiyat</TableCell>
-                      <TableCell>KDV %</TableCell>
-                      <TableCell align="right">İşlemler</TableCell>
+                      <TableCell>{t('invoices.form.itemNumber')}</TableCell>
+                      <TableCell>{t('invoices.form.product')}</TableCell>
+                      <TableCell>{t('invoices.form.quantity')}</TableCell>
+                      <TableCell>{t('invoices.form.unitPrice')}</TableCell>
+                      <TableCell>{t('invoices.form.taxRate')}</TableCell>
+                      <TableCell align="right">{t('invoices.form.actions')}</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {form.items.length === 0 ? (
                       <TableRow>
                         <TableCell colSpan={6} align="center">
-                          Fatura kalemi yok
+                          {t('invoices.empty.noItems')}
                         </TableCell>
                       </TableRow>
                     ) : (
@@ -547,7 +547,7 @@ export default function InvoicesPage() {
               {form.items.length > 0 && (
                 <Box sx={{ mt: 2, mb: 2, display: 'flex', justifyContent: 'flex-end' }}>
                   <Typography variant="body2" color="text.secondary">
-                    BTW Toplamı: {formatCurrency(calculateTaxAmount())}
+                    {t('invoices.form.totals.btwTotal')}: {formatCurrency(calculateTaxAmount())}
                   </Typography>
                 </Box>
               )}
@@ -556,20 +556,20 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <Box sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1, border: '1px solid', borderColor: 'divider' }}>
                 <Typography variant="body2" sx={{ mb: 1 }}>
-                  Ara Toplam: {formatCurrency(calculateSubtotal())}
+                  {t('invoices.form.totals.subtotal')}: {formatCurrency(calculateSubtotal())}
                 </Typography>
                 <Typography variant="body2" sx={{ mb: 1 }}>
-                  KDV Toplamı: {formatCurrency(calculateTaxAmount())}
+                  {t('invoices.form.totals.taxTotal')}: {formatCurrency(calculateTaxAmount())}
                 </Typography>
                 <Typography variant="h6" sx={{ mt: 1, pt: 1, borderTop: '1px solid', borderColor: 'divider' }}>
-                  Genel Toplam: {formatCurrency(calculateTotal())}
+                  {t('invoices.form.totals.grandTotal')}: {formatCurrency(calculateTotal())}
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Notlar"
+                label={t('invoices.form.notes')}
                 multiline
                 rows={2}
                 value={form.notes}
@@ -579,27 +579,27 @@ export default function InvoicesPage() {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>İptal</Button>
+          <Button onClick={handleClose}>{t('common.cancel')}</Button>
           <Button onClick={handleSubmit} variant="contained">
-            {editingId ? 'Güncelle' : 'Oluştur'}
+            {editingId ? t('common.save') : t('common.add')}
           </Button>
         </DialogActions>
       </Dialog>
 
       {/* Fatura Kalemi Dialog */}
       <Dialog open={itemDialogOpen} onClose={() => setItemDialogOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>{editingItemIndex !== null ? 'Kalemi Düzenle' : 'Yeni Kalem'}</DialogTitle>
+        <DialogTitle>{editingItemIndex !== null ? t('invoices.form.itemDialog.editTitle') : t('invoices.form.itemDialog.newTitle')}</DialogTitle>
         <DialogContent>
           <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid item xs={12}>
               <TextField
                 fullWidth
                 select
-                label="Ürün Seç"
+                label={t('invoices.form.itemDialog.selectProduct')}
                 value=""
                 onChange={(e) => handleProductSelect(parseInt(e.target.value))}
               >
-                <MenuItem value="">Ürün Seçin</MenuItem>
+                <MenuItem value="">{t('invoices.form.itemDialog.selectProductPlaceholder')}</MenuItem>
                 {products.map((product) => (
                   <MenuItem key={product.id} value={product.id}>
                     {product.name || product.productName}
@@ -610,7 +610,7 @@ export default function InvoicesPage() {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Ürün Adı"
+                label={t('invoices.form.itemDialog.productName')}
                 value={itemForm.productName}
                 onChange={(e) => setItemForm({ ...itemForm, productName: e.target.value })}
                 required
@@ -619,7 +619,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Ürün Kodu"
+                label={t('invoices.form.itemDialog.productCode')}
                 value={itemForm.productCode}
                 onChange={(e) => setItemForm({ ...itemForm, productCode: e.target.value })}
               />
@@ -627,7 +627,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Miktar"
+                label={t('invoices.form.itemDialog.quantity')}
                 type="number"
                 value={itemForm.quantity}
                 onChange={(e) => setItemForm({ ...itemForm, quantity: parseInt(e.target.value) || 1 })}
@@ -637,7 +637,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Birim Fiyat"
+                label={t('invoices.form.itemDialog.unitPrice')}
                 type="number"
                 value={itemForm.unitPrice}
                 onChange={(e) => setItemForm({ ...itemForm, unitPrice: parseFloat(e.target.value) || 0 })}
@@ -647,7 +647,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="KDV Oranı (%)"
+                label={t('invoices.form.itemDialog.taxRate')}
                 type="number"
                 value={itemForm.taxRate}
                 onChange={(e) => setItemForm({ ...itemForm, taxRate: parseInt(e.target.value) || 0 })}
@@ -657,7 +657,7 @@ export default function InvoicesPage() {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="İndirim (%)"
+                label={t('invoices.form.itemDialog.discount')}
                 type="number"
                 value={itemForm.discountPercent}
                 onChange={(e) => setItemForm({ ...itemForm, discountPercent: parseFloat(e.target.value) || 0 })}
@@ -666,7 +666,7 @@ export default function InvoicesPage() {
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                label="Açıklama"
+                label={t('invoices.form.itemDialog.description')}
                 multiline
                 rows={2}
                 value={itemForm.description}
@@ -676,9 +676,9 @@ export default function InvoicesPage() {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setItemDialogOpen(false)}>İptal</Button>
+          <Button onClick={() => setItemDialogOpen(false)}>{t('common.cancel')}</Button>
           <Button onClick={handleSaveItem} variant="contained">
-            Kaydet
+            {t('common.save')}
           </Button>
         </DialogActions>
       </Dialog>

@@ -243,6 +243,93 @@ export const translations = {
       print: 'Yazdır',
       download: 'İndir (SVG)',
       back: 'Geri'
+    },
+    invoices: {
+      title: 'Faturalar',
+      addButton: 'Yeni Fatura',
+      table: {
+        invoiceNumber: 'Fatura No',
+        date: 'Tarih',
+        customer: 'Müşteri',
+        total: 'Toplam',
+        status: 'Durum',
+        actions: 'İşlemler'
+      },
+      form: {
+        title: 'Fatura',
+        editTitle: 'Faturayı Düzenle',
+        newTitle: 'Yeni Fatura',
+        invoiceInfo: 'Fatura Bilgileri',
+        invoiceNumber: 'Fatura No:',
+        invoiceDate: 'Fatura Tarihi:',
+        dueDate: 'Vade Tarihi:',
+        status: 'Durum:',
+        customerInfo: 'Müşteri Bilgileri',
+        customerName: 'Müşteri Adı',
+        customerTaxNumber: 'Vergi No',
+        customerAddress: 'Adres',
+        customerEmail: 'E-posta',
+        customerPhone: 'Telefon',
+        itemsTitle: 'Fatura Kalemleri',
+        addItem: 'Kalem Ekle',
+        itemNumber: 'Sıra',
+        product: 'Ürün',
+        quantity: 'Miktar',
+        unitPrice: 'Birim Fiyat',
+        taxRate: 'KDV %',
+        actions: 'İşlemler',
+        itemDialog: {
+          editTitle: 'Kalemi Düzenle',
+          newTitle: 'Yeni Kalem',
+          selectProduct: 'Ürün Seç',
+          selectProductPlaceholder: 'Ürün Seçin',
+          productName: 'Ürün Adı',
+          productCode: 'Ürün Kodu',
+          quantity: 'Miktar',
+          unitPrice: 'Birim Fiyat',
+          taxRate: 'KDV Oranı (%)',
+          discount: 'İndirim (%)',
+          description: 'Açıklama'
+        },
+        totals: {
+          btwTotal: 'BTW Toplamı',
+          subtotal: 'Ara Toplam',
+          taxTotal: 'KDV Toplamı',
+          grandTotal: 'Genel Toplam'
+        },
+        notes: 'Notlar',
+        statusOptions: {
+          DRAFT: 'Taslak',
+          SENT: 'Gönderildi',
+          PAID: 'Ödendi',
+          CANCELLED: 'İptal'
+        }
+      },
+      notifications: {
+        createSuccess: 'Fatura başarıyla oluşturuldu',
+        createError: 'Fatura oluşturulamadı',
+        updateSuccess: 'Fatura başarıyla güncellendi',
+        updateError: 'Fatura güncellenemedi',
+        deleteSuccess: 'Fatura başarıyla silindi',
+        deleteError: 'Fatura silinemedi',
+        pdfSuccess: 'PDF başarıyla indirildi',
+        pdfError: 'PDF indirilemedi',
+        excelSuccess: 'Excel başarıyla indirildi',
+        excelError: 'Excel indirilemedi'
+      },
+      confirmations: {
+        delete: 'Bu faturayı silmek istediğinizden emin misiniz?'
+      },
+      tooltips: {
+        pdf: 'PDF İndir',
+        excel: 'Excel İndir',
+        edit: 'Düzenle',
+        delete: 'Sil'
+      },
+      empty: {
+        noItems: 'Fatura kalemi yok',
+        noInvoices: 'Fatura bulunamadı'
+      }
     }
   },
   en: {
@@ -267,6 +354,7 @@ export const translations = {
     nav: {
       dashboard: 'Dashboard',
       products: 'Products',
+      invoices: 'Invoices',
       reports: 'Reports',
       settings: 'Settings'
     },
@@ -488,6 +576,93 @@ export const translations = {
       print: 'Print',
       download: 'Save (SVG)',
       back: 'Back'
+    },
+    invoices: {
+      title: 'Invoices',
+      addButton: 'New Invoice',
+      table: {
+        invoiceNumber: 'Invoice No',
+        date: 'Date',
+        customer: 'Customer',
+        total: 'Total',
+        status: 'Status',
+        actions: 'Actions'
+      },
+      form: {
+        title: 'Invoice',
+        editTitle: 'Edit Invoice',
+        newTitle: 'New Invoice',
+        invoiceInfo: 'Invoice Information',
+        invoiceNumber: 'Invoice No:',
+        invoiceDate: 'Invoice Date:',
+        dueDate: 'Due Date:',
+        status: 'Status:',
+        customerInfo: 'Customer Information',
+        customerName: 'Customer Name',
+        customerTaxNumber: 'Tax Number',
+        customerAddress: 'Address',
+        customerEmail: 'Email',
+        customerPhone: 'Phone',
+        itemsTitle: 'Invoice Items',
+        addItem: 'Add Item',
+        itemNumber: 'No',
+        product: 'Product',
+        quantity: 'Quantity',
+        unitPrice: 'Unit Price',
+        taxRate: 'VAT %',
+        actions: 'Actions',
+        itemDialog: {
+          editTitle: 'Edit Item',
+          newTitle: 'New Item',
+          selectProduct: 'Select Product',
+          selectProductPlaceholder: 'Select Product',
+          productName: 'Product Name',
+          productCode: 'Product Code',
+          quantity: 'Quantity',
+          unitPrice: 'Unit Price',
+          taxRate: 'VAT Rate (%)',
+          discount: 'Discount (%)',
+          description: 'Description'
+        },
+        totals: {
+          btwTotal: 'VAT Total',
+          subtotal: 'Subtotal',
+          taxTotal: 'VAT Total',
+          grandTotal: 'Grand Total'
+        },
+        notes: 'Notes',
+        statusOptions: {
+          DRAFT: 'Draft',
+          SENT: 'Sent',
+          PAID: 'Paid',
+          CANCELLED: 'Cancelled'
+        }
+      },
+      notifications: {
+        createSuccess: 'Invoice created successfully',
+        createError: 'Invoice could not be created',
+        updateSuccess: 'Invoice updated successfully',
+        updateError: 'Invoice could not be updated',
+        deleteSuccess: 'Invoice deleted successfully',
+        deleteError: 'Invoice could not be deleted',
+        pdfSuccess: 'PDF downloaded successfully',
+        pdfError: 'PDF could not be downloaded',
+        excelSuccess: 'Excel downloaded successfully',
+        excelError: 'Excel could not be downloaded'
+      },
+      confirmations: {
+        delete: 'Are you sure you want to delete this invoice?'
+      },
+      tooltips: {
+        pdf: 'Download PDF',
+        excel: 'Download Excel',
+        edit: 'Edit',
+        delete: 'Delete'
+      },
+      empty: {
+        noItems: 'No invoice items',
+        noInvoices: 'No invoices found'
+      }
     }
   },
   nl: {
@@ -512,6 +687,7 @@ export const translations = {
     nav: {
       dashboard: 'Dashboard',
       products: 'Producten',
+      invoices: 'Facturen',
       reports: 'Rapporten',
       settings: 'Instellingen'
     },
@@ -733,6 +909,93 @@ export const translations = {
       print: 'Afdrukken',
       download: 'Opslaan (SVG)',
       back: 'Terug'
+    },
+    invoices: {
+      title: 'Facturen',
+      addButton: 'Nieuwe Factuur',
+      table: {
+        invoiceNumber: 'Factuurnummer',
+        date: 'Datum',
+        customer: 'Klant',
+        total: 'Totaal',
+        status: 'Status',
+        actions: 'Acties'
+      },
+      form: {
+        title: 'Factuur',
+        editTitle: 'Factuur Bewerken',
+        newTitle: 'Nieuwe Factuur',
+        invoiceInfo: 'Factuurgegevens',
+        invoiceNumber: 'Factuurnummer:',
+        invoiceDate: 'Factuurdatum:',
+        dueDate: 'Vervaldatum:',
+        status: 'Status:',
+        customerInfo: 'Klantgegevens',
+        customerName: 'Klantnaam',
+        customerTaxNumber: 'BTW-nummer',
+        customerAddress: 'Adres',
+        customerEmail: 'E-mail',
+        customerPhone: 'Telefoon',
+        itemsTitle: 'Factuurregels',
+        addItem: 'Regel Toevoegen',
+        itemNumber: 'Nr',
+        product: 'Product',
+        quantity: 'Hoeveelheid',
+        unitPrice: 'Stukprijs',
+        taxRate: 'BTW %',
+        actions: 'Acties',
+        itemDialog: {
+          editTitle: 'Regel Bewerken',
+          newTitle: 'Nieuwe Regel',
+          selectProduct: 'Selecteer Product',
+          selectProductPlaceholder: 'Selecteer Product',
+          productName: 'Productnaam',
+          productCode: 'Productcode',
+          quantity: 'Hoeveelheid',
+          unitPrice: 'Stukprijs',
+          taxRate: 'BTW-tarief (%)',
+          discount: 'Korting (%)',
+          description: 'Beschrijving'
+        },
+        totals: {
+          btwTotal: 'BTW Totaal',
+          subtotal: 'Subtotaal',
+          taxTotal: 'BTW Totaal',
+          grandTotal: 'Totaal'
+        },
+        notes: 'Notities',
+        statusOptions: {
+          DRAFT: 'Concept',
+          SENT: 'Verzonden',
+          PAID: 'Betaald',
+          CANCELLED: 'Geannuleerd'
+        }
+      },
+      notifications: {
+        createSuccess: 'Factuur succesvol aangemaakt',
+        createError: 'Factuur kon niet worden aangemaakt',
+        updateSuccess: 'Factuur succesvol bijgewerkt',
+        updateError: 'Factuur kon niet worden bijgewerkt',
+        deleteSuccess: 'Factuur succesvol verwijderd',
+        deleteError: 'Factuur kon niet worden verwijderd',
+        pdfSuccess: 'PDF succesvol gedownload',
+        pdfError: 'PDF kon niet worden gedownload',
+        excelSuccess: 'Excel succesvol gedownload',
+        excelError: 'Excel kon niet worden gedownload'
+      },
+      confirmations: {
+        delete: 'Weet u zeker dat u deze factuur wilt verwijderen?'
+      },
+      tooltips: {
+        pdf: 'PDF Downloaden',
+        excel: 'Excel Downloaden',
+        edit: 'Bewerken',
+        delete: 'Verwijderen'
+      },
+      empty: {
+        noItems: 'Geen factuurregels',
+        noInvoices: 'Geen facturen gevonden'
+      }
     }
   }
 };
