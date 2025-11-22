@@ -16,6 +16,10 @@ const resolveBaseUrl = () => {
     if (origin.includes('stoktakip-frontend')) {
       return origin.replace('stoktakip-frontend', 'stoktakip-backend-lsam') + '/api';
     }
+    // Eğer onrender.com'da ise, direkt backend URL'ini kullan
+    if (origin.includes('onrender.com')) {
+      return 'https://stoktakip-backend-lsam.onrender.com/api';
+    }
     // Fallback: Aynı origin'de /api kullan
     return origin ? `${origin}/api` : 'http://localhost:8080/api';
   }
