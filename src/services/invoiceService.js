@@ -29,11 +29,10 @@ export const generateInvoiceNumber = async () => {
   return response.data;
 };
 
-export const exportInvoicePdf = async (id, locale = 'tr', templateId = null) => {
-  let url = `/invoices/${id}/pdf?locale=${locale}`;
-  if (templateId) {
-    url += `&templateId=${templateId}`;
-  }
+export const exportInvoicePdf = async (id, templateId = null) => {
+  const url = templateId 
+    ? `/invoices/${id}/pdf?templateId=${templateId}`
+    : `/invoices/${id}/pdf`;
   const response = await api.get(url, { responseType: 'blob' });
   
   // Blob'u indirme için kullan
@@ -48,8 +47,8 @@ export const exportInvoicePdf = async (id, locale = 'tr', templateId = null) => 
   window.URL.revokeObjectURL(urlObj);
 };
 
-export const exportInvoiceExcel = async (id, locale = 'tr') => {
-  const response = await api.get(`/invoices/${id}/excel?locale=${locale}`, { responseType: 'blob' });
+export const exportInvoiceExcel = async (id) => {
+  const response = await api.get(`/invoices/${id}/excel`, { responseType: 'blob' });
   
   // Blob'u indirme için kullan
   const blob = new Blob([response.data], { 
