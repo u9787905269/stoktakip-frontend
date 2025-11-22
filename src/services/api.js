@@ -69,6 +69,15 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  // Production'da request detaylarını logla
+  if (import.meta.env.MODE === 'production') {
+    console.log('📤 API Request:', {
+      method: config.method?.toUpperCase(),
+      url: config.baseURL + config.url,
+      baseURL: config.baseURL,
+      path: config.url
+    });
+  }
   return config;
 });
 
