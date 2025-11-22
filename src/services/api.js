@@ -9,15 +9,10 @@ const resolveBaseUrl = () => {
   if (typeof window !== 'undefined' && window.__STOKTAKIP_API_URL__) {
     return window.__STOKTAKIP_API_URL__;
   }
-  // Production'da window.location.origin kullan (eğer backend aynı domain'deyse)
+  // Production'da direkt backend URL'ini kullan
   if (typeof window !== 'undefined' && import.meta.env.MODE === 'production') {
-    const origin = window.location.origin?.replace(/\/$/, '') || '';
-    // Backend URL'i tahmin et (stoktakip-backend-*.onrender.com)
-    if (origin.includes('stoktakip-frontend')) {
-      return origin.replace('stoktakip-frontend', 'stoktakip-backend-lsam') + '/api';
-    }
-    // Fallback: Aynı origin'de /api kullan
-    return origin ? `${origin}/api` : 'http://localhost:8080/api';
+    // Production'da her zaman backend URL'ini kullan
+    return 'https://stoktakip-backend-lsam.onrender.com/api';
   }
   // Development varsayılanı
   return 'http://localhost:8080/api';
