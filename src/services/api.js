@@ -41,14 +41,22 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response) {
+      const fullUrl = error.config?.baseURL + error.config?.url;
       console.error('❌ API Error:', {
-        url: error.config?.url,
+        fullUrl: fullUrl,
+        baseURL: error.config?.baseURL,
+        path: error.config?.url,
         status: error.response.status,
+        statusText: error.response.statusText,
+        data: error.response.data,
         message: error.response.data?.message || error.message
       });
     } else if (error.request) {
+      const fullUrl = error.config?.baseURL + error.config?.url;
       console.error('❌ API Request Error:', {
-        url: error.config?.url,
+        fullUrl: fullUrl,
+        baseURL: error.config?.baseURL,
+        path: error.config?.url,
         message: 'Network error - Backend\'e ulaşılamıyor'
       });
     }
