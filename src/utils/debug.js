@@ -4,6 +4,9 @@
 export const debugApp = () => {
   console.log('🔍 === PRODUCTION DEBUG ===');
   
+  // Backend URL'yi bir kez tanımla
+  const backendUrl = import.meta.env.VITE_API_URL || 'https://stoktakip-backend.onrender.com/api';
+  
   // 1. Environment Variables
   console.log('\n1️⃣ Environment Variables:');
   console.log('  MODE:', import.meta.env.MODE);
@@ -23,7 +26,6 @@ export const debugApp = () => {
   
   // 3. Backend Health Check
   console.log('\n3️⃣ Backend Health Check:');
-  const backendUrl = import.meta.env.VITE_API_URL || 'https://stoktakip-backend.onrender.com/api';
   fetch(`${backendUrl}/actuator/health`)
     .then(response => {
       console.log('  Status:', response.status, response.statusText);
@@ -38,7 +40,6 @@ export const debugApp = () => {
   
   // 4. Test API Request
   console.log('\n4️⃣ Test API Request:');
-  const backendUrl = import.meta.env.VITE_API_URL || 'https://stoktakip-backend.onrender.com/api';
   fetch(`${backendUrl}/products`)
     .then(response => {
       console.log('  Status:', response.status, response.statusText);
@@ -60,7 +61,6 @@ export const debugApp = () => {
   
   // 5. CORS Check
   console.log('\n5️⃣ CORS Check:');
-  const backendUrl = import.meta.env.VITE_API_URL || 'https://stoktakip-backend.onrender.com/api';
   fetch(`${backendUrl}/products`, {
     method: 'OPTIONS'
   })
