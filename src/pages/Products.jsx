@@ -120,9 +120,11 @@ export default function ProductsPage() {
   );
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { data: products = [], isLoading } = useQuery({
+  const { data: products = [], isLoading, error: productsError } = useQuery({
     queryKey: ['products'],
-    queryFn: fetchProducts
+    queryFn: fetchProducts,
+    retry: 2,
+    retryDelay: 1000
   });
   const filteredProducts = useMemo(() => {
     if (!searchTerm.trim()) {
@@ -555,6 +557,10 @@ export default function ProductsPage() {
         <CardContent>
           {isLoading ? (
             <Typography>{t('common.loading')}</Typography>
+          ) : productsError ? (
+            <Alert severity="error" sx={{ mb: 2 }}>
+              {t('products.error.loading')}: {productsError?.message || productsError?.response?.data?.message || 'Unknown error'}
+            </Alert>
           ) : filteredProducts.length === 0 ? (
             <Typography variant="body2" color="text.secondary">
               {t('common.noResults')}
