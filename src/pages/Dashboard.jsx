@@ -12,7 +12,7 @@ import {
   Stack,
   TextField
 } from '@mui/material';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../services/productService';
 import { fetchRecentStockMovements } from '../services/stockMovementService';
