@@ -267,6 +267,7 @@ export const translations = {
     nav: {
       dashboard: 'Dashboard',
       products: 'Products',
+      invoices: 'Invoices',
       reports: 'Reports',
       settings: 'Settings'
     },
@@ -512,6 +513,7 @@ export const translations = {
     nav: {
       dashboard: 'Dashboard',
       products: 'Producten',
+      invoices: 'Facturen',
       reports: 'Rapporten',
       settings: 'Instellingen'
     },
