@@ -11,8 +11,9 @@ const resolveBaseUrl = () => {
   }
   // Production'da direkt backend URL'ini kullan
   if (typeof window !== 'undefined' && import.meta.env.MODE === 'production') {
-    // Production'da her zaman backend URL'ini kullan
-    return 'https://stoktakip-backend-lsam.onrender.com/api';
+    // Production'da environment variable'dan gelen URL'i kullan
+    // Eğer set edilmemişse fallback olarak genel backend URL'i kullan
+    return 'https://stoktakip-backend.onrender.com/api';
   }
   // Development varsayılanı
   return 'http://localhost:8080/api';

@@ -1,52 +1,34 @@
 import api from './api';
 
-export const fetchStockReport = async ({
-  startDate,
-  endDate,
-  warehouseId,
-  format = 'JSON',
-  productName,
-  categoryId,
-  minPrice,
-  maxPrice,
-  productId
-}) => {
-  const params = {};
-  if (startDate) {
-    params.startDate = startDate;
+export const fetchStockReport = async (params = {}) => {
+  const queryParams = new URLSearchParams();
+  
+  if (params.startDate) {
+    queryParams.append('startDate', params.startDate);
   }
-  if (endDate) {
-    params.endDate = endDate;
+  if (params.endDate) {
+    queryParams.append('endDate', params.endDate);
   }
-  if (warehouseId) {
-    params.warehouseId = warehouseId;
+  if (params.warehouseId) {
+    queryParams.append('warehouseId', params.warehouseId);
   }
-  if (productName && productName.trim()) {
-    params.productName = productName.trim();
+  if (params.productId) {
+    queryParams.append('productId', params.productId);
   }
-  if (categoryId) {
-    params.categoryId = categoryId;
+  if (params.categoryId) {
+    queryParams.append('categoryId', params.categoryId);
   }
-  if (minPrice !== undefined && minPrice !== null && minPrice !== '') {
-    params.minPrice = minPrice;
+  if (params.minPrice) {
+    queryParams.append('minPrice', params.minPrice);
   }
-  if (maxPrice !== undefined && maxPrice !== null && maxPrice !== '') {
-    params.maxPrice = maxPrice;
+  if (params.maxPrice) {
+    queryParams.append('maxPrice', params.maxPrice);
   }
-  if (productId) {
-    params.productId = productId;
+  if (params.format) {
+    queryParams.append('format', params.format);
   }
-  params.format = format;
-
-  const normalizedFormat = format ? format.toUpperCase() : 'JSON';
-
-  const config =
-    normalizedFormat === 'CSV' || normalizedFormat === 'PDF'
-      ? { params, responseType: 'blob' }
-      : { params };
-
-  const response = await api.get('/reports/stock', config);
+  
+  const response = await api.get(`/reports/stock?${queryParams.toString()}`);
   return response.data;
 };
-
 

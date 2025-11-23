@@ -1,0 +1,16 @@
+services:
+  # Frontend Service (Static Site)
+  - type: static
+    name: stoktakip-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    region: virginia
+    plan: starter
+    envVars:
+      - key: NODE_VERSION
+        value: 18.x
+      # Backend URL'i environment variable olarak ekleyin
+      # Render Dashboard'dan gerçek backend URL'ini alıp buraya güncelleyin
+      - key: VITE_API_URL
+        value: https://stoktakip-backend.onrender.com/api
+

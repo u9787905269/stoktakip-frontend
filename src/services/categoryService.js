@@ -1,17 +1,16 @@
 import api from './api';
 
 export const fetchCategories = async () => {
-  const { data } = await api.get('/categories');
-  return data;
+  const response = await api.get('/categories');
+  return response.data;
 };
 
-export const createCategory = async (payload) => {
-  const { data } = await api.post('/categories', payload);
-  return data;
+export const createCategory = async (categoryData) => {
+  const response = await api.post('/categories', categoryData);
+  return response.data;
 };
 
 export const deleteCategory = async (id) => {
   await api.delete(`/categories/${id}`);
 };
-
 

@@ -1,73 +1,59 @@
 export const translations = {
   tr: {
     common: {
-      appTitle: 'StokTakip Kontrol Paneli',
-      cancel: 'İptal',
-      save: 'Kaydet',
-      add: 'Ekle',
-      delete: 'Sil',
-      edit: 'Düzenle',
-      close: 'Kapat',
+      appTitle: 'Stok Takip',
+      notAvailable: 'Mevcut değil',
       loading: 'Yükleniyor...',
-      noResults: 'Sonuç bulunamadı.',
-      searchPlaceholder: 'Ürün, kategori, seri no veya barkod ara...',
-      yes: 'Evet',
-      no: 'Hayır',
-      print: 'Yazdır',
-      download: 'İndir',
-      back: 'Geri',
-      notAvailable: '—'
+      noResults: 'Sonuç bulunamadı',
+      cancel: 'İptal',
+      save: 'Kaydet'
     },
     nav: {
-      dashboard: 'Panel',
+      dashboard: 'Dashboard',
       products: 'Ürünler',
       invoices: 'Faturalar',
       reports: 'Raporlar',
       settings: 'Ayarlar'
     },
-    settings: {
-      title: 'Ayarlar',
-      languageCardTitle: 'Dil Seçenekleri',
-      languageLabel: 'Dil',
-      languageHint: 'Dil tercihi tarayıcıda saklanır ve yeniden açıldığında kullanılabilir.',
-      themeCardTitle: 'Tema Tercihi',
-      darkModeLabel: 'Karanlık Mod',
-      lightModeLabel: 'Aydınlık Mod',
-      themeHint: 'Tema tercihi uygulama temasını günceller ve tarayıcıda saklanır.'
-    },
     dashboard: {
-      title: 'Hoş geldiniz',
-      subtitle: 'Barkod destekli stok takibi için özet gösterge paneli.',
-      cards: {
-        totalProducts: {
-          title: 'Toplam Ürün',
-          description: 'Aktif ürün sayısı'
-        },
-        totalStock: {
-          title: 'Toplam Stok',
-          description: 'Toplam stok mevcudu'
-        },
-        last24Hours: {
-          title: 'Son 24 Saat',
-          description: 'Kayıtlı stok hareketi'
-        }
-      },
+      title: 'Dashboard',
+      subtitle: 'Stok takip sistemine hoş geldiniz',
       filters: {
         startDate: 'Başlangıç Tarihi',
         endDate: 'Bitiş Tarihi'
       },
+      cards: {
+        totalProducts: {
+          title: 'Toplam Ürün',
+          description: 'Sistemdeki toplam ürün sayısı'
+        },
+        totalStock: {
+          title: 'Toplam Stok',
+          description: 'Tüm depolardaki toplam stok miktarı'
+        },
+        last24Hours: {
+          title: 'Son 24 Saat',
+          description: 'Son 24 saatteki hareket sayısı'
+        }
+      },
       recentMovements: {
-        title: 'En Son Stok Hareketleri',
-        empty: 'Henüz stok hareketi bulunmuyor.',
-        unknownProduct: 'Ürün',
-        unknownWarehouse: 'Depo bilgisi yok',
+        title: 'Son Stok Hareketleri',
+        empty: 'Stok hareketi bulunamadı',
         inbound: 'Giriş',
-        outbound: 'Çıkış'
+        outbound: 'Çıkış',
+        unknownProduct: 'Bilinmeyen Ürün',
+        unknownWarehouse: 'Bilinmeyen Depo'
       }
     },
     products: {
       title: 'Ürünler',
-      addButton: 'Yeni Ürün',
+      addButton: 'Yeni Ürün Ekle',
+      filters: {
+        searchPlaceholder: 'Ürün ara...'
+      },
+      error: {
+        loading: 'Ürünler yüklenirken hata oluştu'
+      },
       table: {
         productName: 'Ürün Adı',
         category: 'Kategori',
@@ -75,155 +61,152 @@ export const translations = {
         unitBtw: 'Birim BTW',
         totalBtw: 'Toplam BTW',
         totalPrice: 'Toplam Fiyat',
-        btwRate: 'BTW %',
-        stockQuantity: 'Stok Adedi',
-        serialNumber: 'Seri No',
-        warehouse: 'Depo Adı',
-        createdAt: 'Kayıt Tarihi',
+        btwRate: 'BTW Oranı',
+        stockQuantity: 'Stok Miktarı',
+        serialNumber: 'Seri Numarası',
+        warehouse: 'Depo',
+        createdAt: 'Oluşturulma Tarihi',
         barcode: 'Barkod',
         actions: 'İşlemler'
       },
-      showBarcode: 'Barkodu Göster',
-      filters: {
-        searchPlaceholder: 'Ürün, kategori, seri no veya barkod ara...'
-      },
-      notifications: {
-        createSuccess: 'Ürün kaydedildi',
-        createError: 'Ürün kaydedilemedi',
-        updateSuccess: 'Ürün güncellendi',
-        updateError: 'Ürün güncellenemedi',
-        deleteSuccess: 'Ürün silindi',
-        deleteError: 'Ürün silinemedi',
-        categoryCreateSuccess: 'Kategori eklendi',
-        categoryCreateError: 'Kategori eklenemedi',
-        categoryDeleteSuccess: 'Kategori silindi',
-        categoryDeleteError: 'Kategori silinemedi',
-        categoryRequired: 'Kategori adı giriniz',
-        productNameCreateSuccess: 'Ürün adı eklendi',
-        productNameCreateError: 'Ürün adı eklenemedi',
-        productNameDeleteSuccess: 'Ürün adı silindi',
-        productNameDeleteError: 'Ürün adı silinemedi',
-        productNameRequired: 'Ürün adı giriniz',
-        serialCreateSuccess: 'Seri numarası eklendi',
-        serialCreateError: 'Seri numarası eklenemedi',
-        serialDeleteSuccess: 'Seri numarası silindi',
-        serialDeleteError: 'Seri numarası silinemedi',
-        serialRequired: 'Seri numarası giriniz',
-        warehouseCreateSuccess: 'Depo eklendi',
-        warehouseCreateError: 'Depo eklenemedi',
-        warehouseDeleteSuccess: 'Depo silindi',
-        warehouseDeleteError: 'Depo silinemedi',
-        warehouseRequired: 'Depo adı giriniz'
-      },
-      confirmations: {
-        deleteProduct: 'Bu ürünü silmek istiyor musunuz?',
-        deleteCategory: 'Seçili kategoriyi silmek istiyor musunuz?',
-        deleteProductName: 'Seçili ürün adını silmek istiyor musunuz?',
-        deleteSerial: 'Seçili seri numarasını silmek istiyor musunuz?',
-        deleteWarehouse: 'Seçili depoyu silmek istiyor musunuz?'
-      },
       form: {
         addTitle: 'Yeni Ürün Ekle',
+        editTitle: 'Ürünü Düzenle',
         productNameLabel: 'Ürün Adı',
         productNamePlaceholder: 'Ürün adı seçin',
         categoryLabel: 'Kategori',
         categoryPlaceholder: 'Kategori seçin',
-        descriptionLabel: 'Açıklama',
-        unitPriceLabel: 'Birim Fiyat',
-        btwRateLabel: 'BTW Oranı (%)',
-        stockQuantityLabel: 'Stok Adedi',
         serialNumberLabel: 'Seri Numarası',
         serialNumberPlaceholder: 'Seri numarası seçin',
         warehouseLabel: 'Depo',
         warehousePlaceholder: 'Depo seçin',
+        unitPriceLabel: 'Birim Fiyat (Net)',
+        btwRateLabel: 'BTW Oranı (%)',
+        stockQuantityLabel: 'Stok Miktarı',
+        descriptionLabel: 'Açıklama',
+        descriptionPlaceholder: 'Açıklama girin',
+        stockAdjustmentReasonLabel: 'Stok Düzenleme Nedeni',
+        stockAdjustmentReasonPlaceholder: 'Neden seçin',
+        preview: {
+          title: 'Önizleme',
+          unitNet: 'Birim Net',
+          unitBtw: 'Birim BTW',
+          unitGross: 'Birim Brüt',
+          totalNet: 'Toplam Net',
+          totalBtw: 'Toplam BTW',
+          totalGross: 'Toplam Brüt'
+        },
         computedValuesTitle: 'Hesaplanan Değerler',
         unitBtw: 'Birim BTW',
         unitGross: 'Birim Brüt',
-        totalBtw: 'Toplam BTW',
-        totalGross: 'Toplam Brüt',
         totalNet: 'Toplam Net',
-        submit: 'Kaydet',
-        cancel: 'İptal'
+        totalBtw: 'Toplam BTW',
+        totalGross: 'Toplam Brüt'
+      },
+      dialogs: {
+        newProductNameTitle: 'Yeni Ürün Adı',
+        newProductNameLabel: 'Ürün Adı'
       },
       editDialog: {
-        title: 'Ürün Bilgilerini Güncelle',
-        unitPriceLabel: 'Birim Fiyat (KDV Dahil)',
-        stockQuantityLabel: 'Stok Adedi',
-        reasonLabel: 'Hareket Nedeni',
-        reasonPlaceholder: 'Neden seçin',
-        helperText: 'Herhangi bir değişiklik yapıyorsanız seçiniz',
-        customReasonLabel: 'Manuel Not',
-        customReasonPlaceholder: 'İsteğe bağlı açıklama'
+        title: 'Ürünü Düzenle',
+        unitPriceLabel: 'Birim Fiyat (Net)'
       },
+      tooltips: {
+        edit: 'Düzenle',
+        delete: 'Sil',
+        addProductName: 'Yeni ürün adı ekle',
+        deleteProductName: 'Ürün adını sil',
+        addCategory: 'Yeni kategori ekle',
+        deleteCategory: 'Kategoriyi sil',
+        addSerialNumber: 'Yeni seri numarası ekle',
+        deleteSerialNumber: 'Seri numarasını sil',
+        addSerial: 'Yeni seri numarası ekle',
+        deleteSerial: 'Seri numarasını sil',
+        addWarehouse: 'Yeni depo ekle',
+        deleteWarehouse: 'Depoyu sil'
+      },
+      showBarcode: 'Barkod Göster',
       adjustmentReasons: {
         sale: 'Satış',
         disposal: 'İmha',
         return: 'İade',
         purchase: 'Satın Alma',
-        increase: 'Stok Artışı',
-        decrease: 'Stok Azalışı',
-        vatChange: 'BTW Oranı Değişikliği',
+        increase: 'Artış',
+        decrease: 'Azalış',
+        vatChange: 'BTW Değişikliği',
         priceChange: 'Fiyat Değişikliği'
       },
-      dialogs: {
-        newProductNameTitle: 'Yeni Ürün Adı',
-        newProductNameLabel: 'Ürün Adı',
-        newCategoryTitle: 'Yeni Kategori',
-        newCategoryLabel: 'Kategori Adı',
-        newSerialTitle: 'Yeni Seri Numarası',
-        newSerialLabel: 'Seri Numarası',
-        newWarehouseTitle: 'Yeni Depo',
-        newWarehouseNameLabel: 'Depo Adı',
-        newWarehouseLocationLabel: 'Konum (opsiyonel)',
-        newWarehouseDescriptionLabel: 'Açıklama (opsiyonel)'
+      notifications: {
+        createSuccess: 'Ürün başarıyla oluşturuldu',
+        createError: 'Ürün oluşturulurken hata oluştu',
+        updateSuccess: 'Ürün başarıyla güncellendi',
+        updateError: 'Ürün güncellenirken hata oluştu',
+        deleteSuccess: 'Ürün başarıyla silindi',
+        deleteError: 'Ürün silinirken hata oluştu',
+        categoryCreateSuccess: 'Kategori başarıyla oluşturuldu',
+        categoryCreateError: 'Kategori oluşturulurken hata oluştu',
+        categoryDeleteSuccess: 'Kategori başarıyla silindi',
+        categoryDeleteError: 'Kategori silinirken hata oluştu',
+        categoryRequired: 'Kategori adı gereklidir',
+        productNameCreateSuccess: 'Ürün adı başarıyla oluşturuldu',
+        productNameCreateError: 'Ürün adı oluşturulurken hata oluştu',
+        productNameDeleteSuccess: 'Ürün adı başarıyla silindi',
+        productNameDeleteError: 'Ürün adı silinirken hata oluştu',
+        productNameRequired: 'Ürün adı gereklidir',
+        serialCreateSuccess: 'Seri numarası başarıyla oluşturuldu',
+        serialCreateError: 'Seri numarası oluşturulurken hata oluştu',
+        serialDeleteSuccess: 'Seri numarası başarıyla silindi',
+        serialDeleteError: 'Seri numarası silinirken hata oluştu',
+        serialRequired: 'Seri numarası gereklidir',
+        warehouseCreateSuccess: 'Depo başarıyla oluşturuldu',
+        warehouseCreateError: 'Depo oluşturulurken hata oluştu',
+        warehouseDeleteSuccess: 'Depo başarıyla silindi',
+        warehouseDeleteError: 'Depo silinirken hata oluştu',
+        warehouseRequired: 'Depo adı gereklidir'
       },
-      tooltips: {
-        addProductName: 'Yeni ürün adı ekle',
-        deleteProductName: 'Seçili ürün adını sil',
-        addCategory: 'Yeni kategori ekle',
-        deleteCategory: 'Seçili kategoriyi sil',
-        addSerial: 'Yeni seri numarası ekle',
-        deleteSerial: 'Seçili seri numarasını sil',
-        addWarehouse: 'Yeni depo ekle',
-        deleteWarehouse: 'Seçili depoyu sil',
-        edit: 'Düzenle',
-        delete: 'Sil'
+      confirmations: {
+        deleteProduct: 'Bu ürünü silmek istediğinizden emin misiniz?',
+        deleteCategory: 'Bu kategoriyi silmek istediğinizden emin misiniz?',
+        deleteProductName: 'Bu ürün adını silmek istediğinizden emin misiniz?',
+        deleteSerial: 'Bu seri numarasını silmek istediğinizden emin misiniz?',
+        deleteWarehouse: 'Bu depoyu silmek istediğinizden emin misiniz?'
       }
     },
     reports: {
       title: 'Raporlar',
-      filtersCardTitle: 'Stok Raporu Filtreleri',
+      filtersCardTitle: 'Filtreler',
       startDate: 'Başlangıç Tarihi',
       endDate: 'Bitiş Tarihi',
       warehouse: 'Depo',
-      warehouseAll: 'Tümü',
+      warehouseAll: 'Tüm Depolar',
       format: 'Format',
+      formatOptions: {
+        json: 'JSON',
+        csv: 'CSV',
+        pdf: 'PDF'
+      },
       filters: {
         productName: 'Ürün Adı',
-        productNameAll: 'Tümü',
+        productNameAll: 'Tüm Ürünler',
         category: 'Kategori',
-        categoryAll: 'Tümü',
+        categoryAll: 'Tüm Kategoriler',
         minPrice: 'Minimum Fiyat',
-        maxPrice: 'Maksimum Fiyat'
+        maxPrice: 'Maximum Fiyat'
       },
-      formatOptions: {
-        json: 'Ekranda Görüntüle',
-        csv: 'CSV İndir',
-        pdf: 'PDF İndir'
-      },
-      generate: 'Raporu Oluştur',
+      generate: 'Rapor Oluştur',
       print: 'Yazdır',
-      helperText: 'Seçili tarih ve depo için stok raporu PDF ve CSV formatı ile dışa aktarabilirsiniz.',
-      summaryTitle: 'Genel Özet',
+      helperText: 'Raporu oluşturmak için filtreleri seçin ve "Rapor Oluştur" butonuna tıklayın.',
+      error: 'Rapor oluşturulurken hata oluştu',
+      summaryTitle: 'Özet',
       summary: {
         dateRange: 'Tarih Aralığı',
-        totalProducts: 'Ürün Sayısı',
+        totalProducts: 'Toplam Ürün',
         totalStock: 'Toplam Stok',
         totalStockValue: 'Toplam Stok Değeri',
         inbound: 'Giriş',
         outbound: 'Çıkış'
       },
-      detailTitle: 'Detaylı Ürün Listesi',
+      detailTitle: 'Detaylar',
       table: {
         product: 'Ürün',
         warehouse: 'Depo',
@@ -231,38 +214,30 @@ export const translations = {
         unitPrice: 'Birim Fiyat',
         totalPrice: 'Toplam Fiyat',
         totalBtw: 'Toplam BTW',
-        btwRate: 'BTW %',
+        btwRate: 'BTW Oranı',
         lastMovement: 'Son Hareket'
       },
-      noItems: 'Kriterlere uygun kayıt bulunamadı.',
-      error: 'Rapor oluşturulurken hata oluştu.'
+      noItems: 'Rapor için öğe bulunamadı'
     },
-    barcode: {
-      titleFallback: 'Barkod',
-      notFound: 'Barkod bulunamadı.',
-      print: 'Yazdır',
-      download: 'İndir (SVG)',
-      back: 'Geri'
+    settings: {
+      title: 'Ayarlar',
+      languageCardTitle: 'Dil Ayarları',
+      languageLabel: 'Dil',
+      languageHint: 'Uygulama dilini seçin',
+      themeCardTitle: 'Tema Ayarları',
+      darkModeLabel: 'Karanlık Mod',
+      lightModeLabel: 'Açık Mod',
+      themeHint: 'Tema tercihinizi seçin'
     }
   },
   en: {
     common: {
-      appTitle: 'StockTrack Control Panel',
-      cancel: 'Cancel',
-      save: 'Save',
-      add: 'Add',
-      delete: 'Delete',
-      edit: 'Edit',
-      close: 'Close',
+      appTitle: 'Stock Management',
+      notAvailable: 'Not available',
       loading: 'Loading...',
-      noResults: 'No results found.',
-      searchPlaceholder: 'Search product, category, serial or barcode...',
-      yes: 'Yes',
-      no: 'No',
-      print: 'Print',
-      download: 'Download',
-      back: 'Back',
-      notAvailable: '—'
+      noResults: 'No results found',
+      cancel: 'Cancel',
+      save: 'Save'
     },
     nav: {
       dashboard: 'Dashboard',
@@ -271,49 +246,45 @@ export const translations = {
       reports: 'Reports',
       settings: 'Settings'
     },
-    settings: {
-      title: 'Settings',
-      languageCardTitle: 'Language Options',
-      languageLabel: 'Language',
-      languageHint: 'Language preference is stored in the browser and reused on next visit.',
-      themeCardTitle: 'Theme Preference',
-      darkModeLabel: 'Dark Mode',
-      lightModeLabel: 'Light Mode',
-      themeHint: 'Theme preference updates the application theme and is stored in the browser.'
-    },
     dashboard: {
-      title: 'Welcome',
-      subtitle: 'Overview dashboard for barcode-enabled stock tracking.',
-      cards: {
-        totalProducts: {
-          title: 'Total Products',
-          description: 'Active product count'
-        },
-        totalStock: {
-          title: 'Total Stock',
-          description: 'Total stock quantity'
-        },
-        last24Hours: {
-          title: 'Last 24 Hours',
-          description: 'Recorded stock movements'
-        }
-      },
+      title: 'Dashboard',
+      subtitle: 'Welcome to the stock management system',
       filters: {
         startDate: 'Start Date',
         endDate: 'End Date'
       },
+      cards: {
+        totalProducts: {
+          title: 'Total Products',
+          description: 'Total number of products in the system'
+        },
+        totalStock: {
+          title: 'Total Stock',
+          description: 'Total stock quantity across all warehouses'
+        },
+        last24Hours: {
+          title: 'Last 24 Hours',
+          description: 'Number of movements in the last 24 hours'
+        }
+      },
       recentMovements: {
-        title: 'Latest Stock Movements',
-        empty: 'No stock movement recorded yet.',
-        unknownProduct: 'Product',
-        unknownWarehouse: 'No warehouse info',
+        title: 'Recent Stock Movements',
+        empty: 'No stock movements found',
         inbound: 'Inbound',
-        outbound: 'Outbound'
+        outbound: 'Outbound',
+        unknownProduct: 'Unknown Product',
+        unknownWarehouse: 'Unknown Warehouse'
       }
     },
     products: {
       title: 'Products',
-      addButton: 'New Product',
+      addButton: 'Add New Product',
+      filters: {
+        searchPlaceholder: 'Search products...'
+      },
+      error: {
+        loading: 'Error loading products'
+      },
       table: {
         productName: 'Product Name',
         category: 'Category',
@@ -321,155 +292,152 @@ export const translations = {
         unitBtw: 'Unit VAT',
         totalBtw: 'Total VAT',
         totalPrice: 'Total Price',
-        btwRate: 'VAT %',
-        stockQuantity: 'Stock Qty',
-        serialNumber: 'Serial No.',
+        btwRate: 'VAT Rate',
+        stockQuantity: 'Stock Quantity',
+        serialNumber: 'Serial Number',
         warehouse: 'Warehouse',
         createdAt: 'Created At',
         barcode: 'Barcode',
         actions: 'Actions'
       },
-      showBarcode: 'Show Barcode',
-      filters: {
-        searchPlaceholder: 'Search product, category, serial or barcode...'
-      },
-      notifications: {
-        createSuccess: 'Product created',
-        createError: 'Product could not be created',
-        updateSuccess: 'Product updated',
-        updateError: 'Product could not be updated',
-        deleteSuccess: 'Product deleted',
-        deleteError: 'Product could not be deleted',
-        categoryCreateSuccess: 'Category added',
-        categoryCreateError: 'Category could not be added',
-        categoryDeleteSuccess: 'Category deleted',
-        categoryDeleteError: 'Category could not be deleted',
-        categoryRequired: 'Please enter a category name',
-        productNameCreateSuccess: 'Product name added',
-        productNameCreateError: 'Product name could not be added',
-        productNameDeleteSuccess: 'Product name deleted',
-        productNameDeleteError: 'Product name could not be deleted',
-        productNameRequired: 'Please enter a product name',
-        serialCreateSuccess: 'Serial number added',
-        serialCreateError: 'Serial number could not be added',
-        serialDeleteSuccess: 'Serial number deleted',
-        serialDeleteError: 'Serial number could not be deleted',
-        serialRequired: 'Please enter a serial number',
-        warehouseCreateSuccess: 'Warehouse added',
-        warehouseCreateError: 'Warehouse could not be added',
-        warehouseDeleteSuccess: 'Warehouse deleted',
-        warehouseDeleteError: 'Warehouse could not be deleted',
-        warehouseRequired: 'Please enter a warehouse name'
-      },
-      confirmations: {
-        deleteProduct: 'Are you sure you want to delete this product?',
-        deleteCategory: 'Delete the selected category?',
-        deleteProductName: 'Delete the selected product name?',
-        deleteSerial: 'Delete the selected serial number?',
-        deleteWarehouse: 'Delete the selected warehouse?'
-      },
       form: {
         addTitle: 'Add New Product',
+        editTitle: 'Edit Product',
         productNameLabel: 'Product Name',
         productNamePlaceholder: 'Select product name',
         categoryLabel: 'Category',
         categoryPlaceholder: 'Select category',
-        descriptionLabel: 'Description',
-        unitPriceLabel: 'Unit Price',
-        btwRateLabel: 'VAT Rate (%)',
-        stockQuantityLabel: 'Stock Quantity',
         serialNumberLabel: 'Serial Number',
         serialNumberPlaceholder: 'Select serial number',
         warehouseLabel: 'Warehouse',
         warehousePlaceholder: 'Select warehouse',
-        computedValuesTitle: 'Calculated Values',
+        unitPriceLabel: 'Unit Price (Net)',
+        btwRateLabel: 'VAT Rate (%)',
+        stockQuantityLabel: 'Stock Quantity',
+        descriptionLabel: 'Description',
+        descriptionPlaceholder: 'Enter description',
+        stockAdjustmentReasonLabel: 'Stock Adjustment Reason',
+        stockAdjustmentReasonPlaceholder: 'Select reason',
+        preview: {
+          title: 'Preview',
+          unitNet: 'Unit Net',
+          unitBtw: 'Unit VAT',
+          unitGross: 'Unit Gross',
+          totalNet: 'Total Net',
+          totalBtw: 'Total VAT',
+          totalGross: 'Total Gross'
+        },
+        computedValuesTitle: 'Computed Values',
         unitBtw: 'Unit VAT',
         unitGross: 'Unit Gross',
-        totalBtw: 'Total VAT',
-        totalGross: 'Total Gross',
         totalNet: 'Total Net',
-        submit: 'Save',
-        cancel: 'Cancel'
+        totalBtw: 'Total VAT',
+        totalGross: 'Total Gross'
+      },
+      dialogs: {
+        newProductNameTitle: 'New Product Name',
+        newProductNameLabel: 'Product Name'
       },
       editDialog: {
-        title: 'Update Product Information',
-        unitPriceLabel: 'Unit Price (VAT Included)',
-        stockQuantityLabel: 'Stock Quantity',
-        reasonLabel: 'Movement Reason',
-        reasonPlaceholder: 'Select reason',
-        helperText: 'Choose this if you are making any change',
-        customReasonLabel: 'Manual Note',
-        customReasonPlaceholder: 'Optional description'
+        title: 'Edit Product',
+        unitPriceLabel: 'Unit Price (Net)'
       },
+      tooltips: {
+        edit: 'Edit',
+        delete: 'Delete',
+        addProductName: 'Add new product name',
+        deleteProductName: 'Delete product name',
+        addCategory: 'Add new category',
+        deleteCategory: 'Delete category',
+        addSerialNumber: 'Add new serial number',
+        deleteSerialNumber: 'Delete serial number',
+        addSerial: 'Add new serial number',
+        deleteSerial: 'Delete serial number',
+        addWarehouse: 'Add new warehouse',
+        deleteWarehouse: 'Delete warehouse'
+      },
+      showBarcode: 'Show Barcode',
       adjustmentReasons: {
         sale: 'Sale',
         disposal: 'Disposal',
         return: 'Return',
         purchase: 'Purchase',
-        increase: 'Stock Increase',
-        decrease: 'Stock Decrease',
-        vatChange: 'VAT Rate Change',
-        priceChange: 'Price Adjustment'
+        increase: 'Increase',
+        decrease: 'Decrease',
+        vatChange: 'VAT Change',
+        priceChange: 'Price Change'
       },
-      dialogs: {
-        newProductNameTitle: 'New Product Name',
-        newProductNameLabel: 'Product Name',
-        newCategoryTitle: 'New Category',
-        newCategoryLabel: 'Category Name',
-        newSerialTitle: 'New Serial Number',
-        newSerialLabel: 'Serial Number',
-        newWarehouseTitle: 'New Warehouse',
-        newWarehouseNameLabel: 'Warehouse Name',
-        newWarehouseLocationLabel: 'Location (optional)',
-        newWarehouseDescriptionLabel: 'Description (optional)'
+      notifications: {
+        createSuccess: 'Product created successfully',
+        createError: 'Error creating product',
+        updateSuccess: 'Product updated successfully',
+        updateError: 'Error updating product',
+        deleteSuccess: 'Product deleted successfully',
+        deleteError: 'Error deleting product',
+        categoryCreateSuccess: 'Category created successfully',
+        categoryCreateError: 'Error creating category',
+        categoryDeleteSuccess: 'Category deleted successfully',
+        categoryDeleteError: 'Error deleting category',
+        categoryRequired: 'Category name is required',
+        productNameCreateSuccess: 'Product name created successfully',
+        productNameCreateError: 'Error creating product name',
+        productNameDeleteSuccess: 'Product name deleted successfully',
+        productNameDeleteError: 'Error deleting product name',
+        productNameRequired: 'Product name is required',
+        serialCreateSuccess: 'Serial number created successfully',
+        serialCreateError: 'Error creating serial number',
+        serialDeleteSuccess: 'Serial number deleted successfully',
+        serialDeleteError: 'Error deleting serial number',
+        serialRequired: 'Serial number is required',
+        warehouseCreateSuccess: 'Warehouse created successfully',
+        warehouseCreateError: 'Error creating warehouse',
+        warehouseDeleteSuccess: 'Warehouse deleted successfully',
+        warehouseDeleteError: 'Error deleting warehouse',
+        warehouseRequired: 'Warehouse name is required'
       },
-      tooltips: {
-        addProductName: 'Add new product name',
-        deleteProductName: 'Delete selected product name',
-        addCategory: 'Add new category',
-        deleteCategory: 'Delete selected category',
-        addSerial: 'Add new serial number',
-        deleteSerial: 'Delete selected serial number',
-        addWarehouse: 'Add new warehouse',
-        deleteWarehouse: 'Delete selected warehouse',
-        edit: 'Edit',
-        delete: 'Delete'
+      confirmations: {
+        deleteProduct: 'Are you sure you want to delete this product?',
+        deleteCategory: 'Are you sure you want to delete this category?',
+        deleteProductName: 'Are you sure you want to delete this product name?',
+        deleteSerial: 'Are you sure you want to delete this serial number?',
+        deleteWarehouse: 'Are you sure you want to delete this warehouse?'
       }
     },
     reports: {
       title: 'Reports',
-      filtersCardTitle: 'Stock Report Filters',
+      filtersCardTitle: 'Filters',
       startDate: 'Start Date',
       endDate: 'End Date',
       warehouse: 'Warehouse',
-      warehouseAll: 'All',
+      warehouseAll: 'All Warehouses',
       format: 'Format',
+      formatOptions: {
+        json: 'JSON',
+        csv: 'CSV',
+        pdf: 'PDF'
+      },
       filters: {
         productName: 'Product Name',
-        productNameAll: 'All',
+        productNameAll: 'All Products',
         category: 'Category',
-        categoryAll: 'All',
+        categoryAll: 'All Categories',
         minPrice: 'Minimum Price',
         maxPrice: 'Maximum Price'
       },
-      formatOptions: {
-        json: 'View on Screen',
-        csv: 'Download CSV',
-        pdf: 'Download PDF'
-      },
       generate: 'Generate Report',
       print: 'Print',
-      helperText: 'You can export the selected date range and warehouse as PDF or CSV.',
-      summaryTitle: 'Overall Summary',
+      helperText: 'Select filters and click "Generate Report" to create the report.',
+      error: 'Error generating report',
+      summaryTitle: 'Summary',
       summary: {
         dateRange: 'Date Range',
-        totalProducts: 'Product Count',
+        totalProducts: 'Total Products',
         totalStock: 'Total Stock',
         totalStockValue: 'Total Stock Value',
         inbound: 'Inbound',
         outbound: 'Outbound'
       },
-      detailTitle: 'Detailed Product List',
+      detailTitle: 'Details',
       table: {
         product: 'Product',
         warehouse: 'Warehouse',
@@ -477,38 +445,30 @@ export const translations = {
         unitPrice: 'Unit Price',
         totalPrice: 'Total Price',
         totalBtw: 'Total VAT',
-        btwRate: 'VAT %',
+        btwRate: 'VAT Rate',
         lastMovement: 'Last Movement'
       },
-      noItems: 'No records match the selected criteria.',
-      error: 'An error occurred while generating the report.'
+      noItems: 'No items found for report'
     },
-    barcode: {
-      titleFallback: 'Barcode',
-      notFound: 'Barcode not found.',
-      print: 'Print',
-      download: 'Save (SVG)',
-      back: 'Back'
+    settings: {
+      title: 'Settings',
+      languageCardTitle: 'Language Settings',
+      languageLabel: 'Language',
+      languageHint: 'Select application language',
+      themeCardTitle: 'Theme Settings',
+      darkModeLabel: 'Dark Mode',
+      lightModeLabel: 'Light Mode',
+      themeHint: 'Select your theme preference'
     }
   },
   nl: {
     common: {
-      appTitle: 'StockTrack Controlepaneel',
-      cancel: 'Annuleren',
-      save: 'Opslaan',
-      add: 'Toevoegen',
-      delete: 'Verwijderen',
-      edit: 'Bewerken',
-      close: 'Sluiten',
+      appTitle: 'Voorraadbeheer',
+      notAvailable: 'Niet beschikbaar',
       loading: 'Laden...',
-      noResults: 'Geen resultaten gevonden.',
-      searchPlaceholder: 'Zoek product, categorie, serienummer of barcode...',
-      yes: 'Ja',
-      no: 'Nee',
-      print: 'Afdrukken',
-      download: 'Downloaden',
-      back: 'Terug',
-      notAvailable: '—'
+      noResults: 'Geen resultaten gevonden',
+      cancel: 'Annuleren',
+      save: 'Opslaan'
     },
     nav: {
       dashboard: 'Dashboard',
@@ -517,224 +477,220 @@ export const translations = {
       reports: 'Rapporten',
       settings: 'Instellingen'
     },
-    settings: {
-      title: 'Instellingen',
-      languageCardTitle: 'Taalopties',
-      languageLabel: 'Taal',
-      languageHint: 'De taalkeuze wordt in de browser opgeslagen en opnieuw gebruikt.',
-      themeCardTitle: 'Themapreferentie',
-      darkModeLabel: 'Donkere modus',
-      lightModeLabel: 'Lichte modus',
-      themeHint: 'De themakeuze wordt opgeslagen en past het thema van de applicatie aan.'
-    },
     dashboard: {
-      title: 'Welkom',
-      subtitle: 'Overzichts-dashboard voor barcodes ondersteunde voorraadopvolging.',
+      title: 'Dashboard',
+      subtitle: 'Welkom bij het voorraadbeheersysteem',
+      filters: {
+        startDate: 'Startdatum',
+        endDate: 'Einddatum'
+      },
       cards: {
         totalProducts: {
           title: 'Totaal Producten',
-          description: 'Aantal actieve producten'
+          description: 'Totaal aantal producten in het systeem'
         },
         totalStock: {
           title: 'Totale Voorraad',
-          description: 'Totale voorraadhoeveelheid'
+          description: 'Totale voorraadhoeveelheid in alle magazijnen'
         },
         last24Hours: {
           title: 'Laatste 24 Uur',
-          description: 'Geregistreerde voorraadbewegingen'
+          description: 'Aantal bewegingen in de laatste 24 uur'
         }
       },
-      filters: {
-        startDate: 'Begindatum',
-        endDate: 'Einddatum'
-      },
       recentMovements: {
-        title: 'Laatste voorraadbewegingen',
-        empty: 'Nog geen voorraadbeweging geregistreerd.',
-        unknownProduct: 'Product',
-        unknownWarehouse: 'Geen magazijninformatie',
+        title: 'Recente Voorraadbewegingen',
+        empty: 'Geen voorraadbewegingen gevonden',
         inbound: 'Inkomend',
-        outbound: 'Uitgaand'
+        outbound: 'Uitgaand',
+        unknownProduct: 'Onbekend Product',
+        unknownWarehouse: 'Onbekend Magazijn'
       }
     },
     products: {
       title: 'Producten',
-      addButton: 'Nieuw product',
+      addButton: 'Nieuw Product Toevoegen',
+      filters: {
+        searchPlaceholder: 'Zoek producten...'
+      },
+      error: {
+        loading: 'Fout bij het laden van producten'
+      },
       table: {
         productName: 'Productnaam',
         category: 'Categorie',
-        unitPrice: 'Stukprijs',
-        unitBtw: 'BTW per stuk',
+        unitPrice: 'Eenheidsprijs',
+        unitBtw: 'Eenheid BTW',
         totalBtw: 'Totale BTW',
-        totalPrice: 'Totale prijs',
-        btwRate: 'BTW %',
-        stockQuantity: 'Voorraad',
+        totalPrice: 'Totale Prijs',
+        btwRate: 'BTW-tarief',
+        stockQuantity: 'Voorraadhoeveelheid',
         serialNumber: 'Serienummer',
         warehouse: 'Magazijn',
-        createdAt: 'Aanmaakdatum',
+        createdAt: 'Aangemaakt Op',
         barcode: 'Barcode',
         actions: 'Acties'
       },
-      showBarcode: 'Barcode tonen',
-      filters: {
-        searchPlaceholder: 'Zoek product, categorie, serienummer of barcode...'
-      },
-      notifications: {
-        createSuccess: 'Product aangemaakt',
-        createError: 'Product kon niet worden aangemaakt',
-        updateSuccess: 'Product bijgewerkt',
-        updateError: 'Product kon niet worden bijgewerkt',
-        deleteSuccess: 'Product verwijderd',
-        deleteError: 'Product kon niet worden verwijderd',
-        categoryCreateSuccess: 'Categorie toegevoegd',
-        categoryCreateError: 'Categorie kon niet worden toegevoegd',
-        categoryDeleteSuccess: 'Categorie verwijderd',
-        categoryDeleteError: 'Categorie kon niet worden verwijderd',
-        categoryRequired: 'Voer een categorienaam in',
-        productNameCreateSuccess: 'Productnaam toegevoegd',
-        productNameCreateError: 'Productnaam kon niet worden toegevoegd',
-        productNameDeleteSuccess: 'Productnaam verwijderd',
-        productNameDeleteError: 'Productnaam kon niet worden verwijderd',
-        productNameRequired: 'Voer een productnaam in',
-        serialCreateSuccess: 'Serienummer toegevoegd',
-        serialCreateError: 'Serienummer kon niet worden toegevoegd',
-        serialDeleteSuccess: 'Serienummer verwijderd',
-        serialDeleteError: 'Serienummer kon niet worden verwijderd',
-        serialRequired: 'Voer een serienummer in',
-        warehouseCreateSuccess: 'Magazijn toegevoegd',
-        warehouseCreateError: 'Magazijn kon niet worden toegevoegd',
-        warehouseDeleteSuccess: 'Magazijn verwijderd',
-        warehouseDeleteError: 'Magazijn kon niet worden verwijderd',
-        warehouseRequired: 'Voer een magazijnnaam in'
-      },
-      confirmations: {
-        deleteProduct: 'Weet u zeker dat u dit product wilt verwijderen?',
-        deleteCategory: 'Geselecteerde categorie verwijderen?',
-        deleteProductName: 'Geselecteerde productnaam verwijderen?',
-        deleteSerial: 'Geselecteerd serienummer verwijderen?',
-        deleteWarehouse: 'Geselecteerd magazijn verwijderen?'
-      },
       form: {
-        addTitle: 'Nieuw product toevoegen',
+        addTitle: 'Nieuw Product Toevoegen',
+        editTitle: 'Product Bewerken',
         productNameLabel: 'Productnaam',
         productNamePlaceholder: 'Selecteer productnaam',
         categoryLabel: 'Categorie',
         categoryPlaceholder: 'Selecteer categorie',
-        descriptionLabel: 'Beschrijving',
-        unitPriceLabel: 'Stukprijs',
-        btwRateLabel: 'BTW-tarief (%)',
-        stockQuantityLabel: 'Voorraad',
         serialNumberLabel: 'Serienummer',
         serialNumberPlaceholder: 'Selecteer serienummer',
         warehouseLabel: 'Magazijn',
         warehousePlaceholder: 'Selecteer magazijn',
-        computedValuesTitle: 'Berekende waarden',
-        unitBtw: 'BTW per stuk',
-        unitGross: 'Bruto per stuk',
-        totalBtw: 'Totale BTW',
-        totalGross: 'Totale bruto',
-        totalNet: 'Totale netto',
-        submit: 'Opslaan',
-        cancel: 'Annuleren'
-      },
-      editDialog: {
-        title: 'Productgegevens bijwerken',
-        unitPriceLabel: 'Stukprijs (incl. BTW)',
-        stockQuantityLabel: 'Voorraad',
-        reasonLabel: 'Bewegingsreden',
-        reasonPlaceholder: 'Kies reden',
-        helperText: 'Kies dit wanneer u een wijziging doorvoert',
-        customReasonLabel: 'Handmatige notitie',
-        customReasonPlaceholder: 'Optionele beschrijving'
-      },
-      adjustmentReasons: {
-        sale: 'Verkoop',
-        disposal: 'Afvoer',
-        return: 'Retour',
-        purchase: 'Inkoop',
-        increase: 'Voorraad toename',
-        decrease: 'Voorraad afname',
-        vatChange: 'BTW-tarief wijziging',
-        priceChange: 'Prijsaanpassing'
+        unitPriceLabel: 'Eenheidsprijs (Netto)',
+        btwRateLabel: 'BTW-tarief (%)',
+        stockQuantityLabel: 'Voorraadhoeveelheid',
+        descriptionLabel: 'Beschrijving',
+        descriptionPlaceholder: 'Voer beschrijving in',
+        stockAdjustmentReasonLabel: 'Voorraadaanpassing Reden',
+        stockAdjustmentReasonPlaceholder: 'Selecteer reden',
+        preview: {
+          title: 'Voorbeeld',
+          unitNet: 'Eenheid Netto',
+          unitBtw: 'Eenheid BTW',
+          unitGross: 'Eenheid Bruto',
+          totalNet: 'Totaal Netto',
+          totalBtw: 'Totaal BTW',
+          totalGross: 'Totaal Bruto'
+        },
+        computedValuesTitle: 'Berekende Waarden',
+        unitBtw: 'Eenheid BTW',
+        unitGross: 'Eenheid Bruto',
+        totalNet: 'Totaal Netto',
+        totalBtw: 'Totaal BTW',
+        totalGross: 'Totaal Bruto'
       },
       dialogs: {
-        newProductNameTitle: 'Nieuwe productnaam',
-        newProductNameLabel: 'Productnaam',
-        newCategoryTitle: 'Nieuwe categorie',
-        newCategoryLabel: 'Categorienaam',
-        newSerialTitle: 'Nieuw serienummer',
-        newSerialLabel: 'Serienummer',
-        newWarehouseTitle: 'Nieuw magazijn',
-        newWarehouseNameLabel: 'Magazijnnaam',
-        newWarehouseLocationLabel: 'Locatie (optioneel)',
-        newWarehouseDescriptionLabel: 'Beschrijving (optioneel)'
+        newProductNameTitle: 'Nieuwe Productnaam',
+        newProductNameLabel: 'Productnaam'
+      },
+      editDialog: {
+        title: 'Product Bewerken',
+        unitPriceLabel: 'Eenheidsprijs (Netto)'
       },
       tooltips: {
-        addProductName: 'Nieuwe productnaam toevoegen',
-        deleteProductName: 'Geselecteerde productnaam verwijderen',
-        addCategory: 'Nieuwe categorie toevoegen',
-        deleteCategory: 'Geselecteerde categorie verwijderen',
-        addSerial: 'Nieuw serienummer toevoegen',
-        deleteSerial: 'Geselecteerd serienummer verwijderen',
-        addWarehouse: 'Nieuw magazijn toevoegen',
-        deleteWarehouse: 'Geselecteerd magazijn verwijderen',
         edit: 'Bewerken',
-        delete: 'Verwijderen'
+        delete: 'Verwijderen',
+        addProductName: 'Nieuwe productnaam toevoegen',
+        deleteProductName: 'Productnaam verwijderen',
+        addCategory: 'Nieuwe categorie toevoegen',
+        deleteCategory: 'Categorie verwijderen',
+        addSerialNumber: 'Nieuw serienummer toevoegen',
+        deleteSerialNumber: 'Serienummer verwijderen',
+        addSerial: 'Nieuw serienummer toevoegen',
+        deleteSerial: 'Serienummer verwijderen',
+        addWarehouse: 'Nieuw magazijn toevoegen',
+        deleteWarehouse: 'Magazijn verwijderen'
+      },
+      showBarcode: 'Barcode Tonen',
+      adjustmentReasons: {
+        sale: 'Verkoop',
+        disposal: 'Vernietiging',
+        return: 'Retour',
+        purchase: 'Aankoop',
+        increase: 'Toename',
+        decrease: 'Afname',
+        vatChange: 'BTW Wijziging',
+        priceChange: 'Prijs Wijziging'
+      },
+      notifications: {
+        createSuccess: 'Product succesvol aangemaakt',
+        createError: 'Fout bij het aanmaken van product',
+        updateSuccess: 'Product succesvol bijgewerkt',
+        updateError: 'Fout bij het bijwerken van product',
+        deleteSuccess: 'Product succesvol verwijderd',
+        deleteError: 'Fout bij het verwijderen van product',
+        categoryCreateSuccess: 'Categorie succesvol aangemaakt',
+        categoryCreateError: 'Fout bij het aanmaken van categorie',
+        categoryDeleteSuccess: 'Categorie succesvol verwijderd',
+        categoryDeleteError: 'Fout bij het verwijderen van categorie',
+        categoryRequired: 'Categorienaam is verplicht',
+        productNameCreateSuccess: 'Productnaam succesvol aangemaakt',
+        productNameCreateError: 'Fout bij het aanmaken van productnaam',
+        productNameDeleteSuccess: 'Productnaam succesvol verwijderd',
+        productNameDeleteError: 'Fout bij het verwijderen van productnaam',
+        productNameRequired: 'Productnaam is verplicht',
+        serialCreateSuccess: 'Serienummer succesvol aangemaakt',
+        serialCreateError: 'Fout bij het aanmaken van serienummer',
+        serialDeleteSuccess: 'Serienummer succesvol verwijderd',
+        serialDeleteError: 'Fout bij het verwijderen van serienummer',
+        serialRequired: 'Serienummer is verplicht',
+        warehouseCreateSuccess: 'Magazijn succesvol aangemaakt',
+        warehouseCreateError: 'Fout bij het aanmaken van magazijn',
+        warehouseDeleteSuccess: 'Magazijn succesvol verwijderd',
+        warehouseDeleteError: 'Fout bij het verwijderen van magazijn',
+        warehouseRequired: 'Magazijnnaam is verplicht'
+      },
+      confirmations: {
+        deleteProduct: 'Weet u zeker dat u dit product wilt verwijderen?',
+        deleteCategory: 'Weet u zeker dat u deze categorie wilt verwijderen?',
+        deleteProductName: 'Weet u zeker dat u deze productnaam wilt verwijderen?',
+        deleteSerial: 'Weet u zeker dat u dit serienummer wilt verwijderen?',
+        deleteWarehouse: 'Weet u zeker dat u dit magazijn wilt verwijderen?'
       }
     },
     reports: {
       title: 'Rapporten',
-      filtersCardTitle: 'Voorraadrapport filters',
-      startDate: 'Begindatum',
+      filtersCardTitle: 'Filters',
+      startDate: 'Startdatum',
       endDate: 'Einddatum',
       warehouse: 'Magazijn',
-      warehouseAll: 'Alle',
+      warehouseAll: 'Alle Magazijnen',
       format: 'Formaat',
+      formatOptions: {
+        json: 'JSON',
+        csv: 'CSV',
+        pdf: 'PDF'
+      },
       filters: {
         productName: 'Productnaam',
-        productNameAll: 'Alle',
+        productNameAll: 'Alle Producten',
         category: 'Categorie',
-        categoryAll: 'Alle',
-        minPrice: 'Minimum prijs',
-        maxPrice: 'Maximum prijs'
+        categoryAll: 'Alle Categorieën',
+        minPrice: 'Minimum Prijs',
+        maxPrice: 'Maximum Prijs'
       },
-      formatOptions: {
-        json: 'Op scherm bekijken',
-        csv: 'CSV downloaden',
-        pdf: 'PDF downloaden'
-      },
-      generate: 'Rapport genereren',
+      generate: 'Rapport Genereren',
       print: 'Afdrukken',
-      helperText: 'Exporteer het geselecteerde bereik als PDF of CSV.',
-      summaryTitle: 'Algemene samenvatting',
+      helperText: 'Selecteer filters en klik op "Rapport Genereren" om het rapport aan te maken.',
+      error: 'Fout bij het genereren van rapport',
+      summaryTitle: 'Samenvatting',
       summary: {
         dateRange: 'Datumbereik',
-        totalProducts: 'Aantal producten',
-        totalStock: 'Totale voorraad',
-        totalStockValue: 'Totale voorraadwaarde',
+        totalProducts: 'Totaal Producten',
+        totalStock: 'Totale Voorraad',
+        totalStockValue: 'Totale Voorraadwaarde',
         inbound: 'Inkomend',
         outbound: 'Uitgaand'
       },
-      detailTitle: 'Gedetailleerde productlijst',
+      detailTitle: 'Details',
       table: {
         product: 'Product',
         warehouse: 'Magazijn',
         stock: 'Voorraad',
-        unitPrice: 'Stukprijs',
-        totalPrice: 'Totale prijs',
+        unitPrice: 'Eenheidsprijs',
+        totalPrice: 'Totale Prijs',
         totalBtw: 'Totale BTW',
-        btwRate: 'BTW %',
-        lastMovement: 'Laatste beweging'
+        btwRate: 'BTW-tarief',
+        lastMovement: 'Laatste Beweging'
       },
-      noItems: 'Geen records die aan de criteria voldoen.',
-      error: 'Er is een fout opgetreden bij het genereren van het rapport.'
+      noItems: 'Geen items gevonden voor rapport'
     },
-    barcode: {
-      titleFallback: 'Barcode',
-      notFound: 'Geen barcode gevonden.',
-      print: 'Afdrukken',
-      download: 'Opslaan (SVG)',
-      back: 'Terug'
+    settings: {
+      title: 'Instellingen',
+      languageCardTitle: 'Taalinstellingen',
+      languageLabel: 'Taal',
+      languageHint: 'Selecteer applicatietaal',
+      themeCardTitle: 'Thema-instellingen',
+      darkModeLabel: 'Donkere Modus',
+      lightModeLabel: 'Lichte Modus',
+      themeHint: 'Selecteer uw thema voorkeur'
     }
   }
 };
+

@@ -126,17 +126,6 @@ export default function ProductsPage() {
     retry: 2,
     retryDelay: 1000
   });
-
-  // Debug logging
-  useEffect(() => {
-    console.log('📊 Products Page State:', {
-      isLoading,
-      hasError: !!productsError,
-      error: productsError,
-      productsCount: products?.length || 0,
-      products: products
-    });
-  }, [isLoading, productsError, products]);
   const filteredProducts = useMemo(() => {
     if (!searchTerm.trim()) {
       return products;

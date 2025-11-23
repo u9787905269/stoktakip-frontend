@@ -1,13 +1,13 @@
 import api from './api';
 
 export const fetchWarehouses = async () => {
-  const { data } = await api.get('/warehouses');
-  return data;
+  const response = await api.get('/warehouses');
+  return response.data;
 };
 
-export const createWarehouse = async (payload) => {
-  const { data } = await api.post('/warehouses', payload);
-  return data;
+export const createWarehouse = async (warehouseData) => {
+  const response = await api.post('/warehouses', warehouseData);
+  return response.data;
 };
 
 export const deleteWarehouse = async (id) => {
